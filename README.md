@@ -1,6 +1,6 @@
 # tbauth
 A simple Telegram bot authentication library
-Authenticates user temporarily using a hardocded password
+Authenticates user temporarily using a hardcoded password
 
 ### Example
 
