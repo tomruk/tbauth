@@ -5,8 +5,8 @@ import (
 )
 
 var (
-	authenticatedUserIDs []int
-	Passphrase           string = "1337"
+	AuthenticatedUsers []*tb.User
+	Passphrase         string = "1337"
 )
 
 func Authenticate(sender *tb.User, pass string) int {
@@ -14,21 +14,21 @@ func Authenticate(sender *tb.User, pass string) int {
 		// Wrong passphrase
 		return 2
 	}
-	for _, val := range authenticatedUserIDs {
-		if val == sender.ID {
+	for _, u := range AuthenticatedUsers {
+		if u == sender {
 			// Already authenticated
 			return 1
 		}
 	}
 
-	authenticatedUserIDs = append(authenticatedUserIDs, sender.ID)
+	AuthenticatedUsers = append(AuthenticatedUsers, sender)
 
 	return 0
 }
 
 func IsAuthenticated(sender *tb.User) bool {
-	for _, val := range authenticatedUserIDs {
-		if val == sender.ID {
+	for _, u := range AuthenticatedUsers {
+		if u == sender {
 			return true
 		}
 	}
