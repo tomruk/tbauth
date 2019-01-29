@@ -15,7 +15,7 @@ func Authenticate(sender *tb.User, pass string) int {
 		return 2
 	}
 	for _, u := range AuthenticatedUsers {
-		if u == sender {
+		if u.ID == sender.ID {
 			// Already authenticated
 			return 1
 		}
@@ -28,7 +28,7 @@ func Authenticate(sender *tb.User, pass string) int {
 
 func IsAuthenticated(sender *tb.User) bool {
 	for _, u := range AuthenticatedUsers {
-		if u == sender {
+		if u.ID == sender.ID {
 			return true
 		}
 	}
