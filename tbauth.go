@@ -6,11 +6,11 @@ import (
 
 var (
 	AuthenticatedUsers []*tb.User
-	Passphrase         string = "1337"
+	Passphrase         *string
 )
 
 func Authenticate(sender *tb.User, pass string) int {
-	if pass != Passphrase {
+	if pass != *Passphrase {
 		// Wrong passphrase
 		return 2
 	}
