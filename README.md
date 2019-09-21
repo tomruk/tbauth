@@ -1,10 +1,10 @@
 # tbauth
-A simple Telegram bot authentication library
+A simple Telegram bot authentication library  
 Authenticates user temporarily using a hardcoded password
 
 ### Example
 
-```
+```go
 package main
 
 import (
@@ -73,11 +73,11 @@ func main() {
     // Check if authenticated, otherwise exit
 	b.Handle("/dosomething", func(m *tb.Message) {
 		if tbauth.IsAuthenticated(m.Sender) == false {
-			b.Send(m.Sender, "You're not authorized!")
+			b.Send(m.Sender, "You're not authenticated!")
 			return
 		}
 
-        b.Send(c.Sender, "Hi! You're authorized")
+        b.Send(c.Sender, "Hi! You're authenticated")
 	})
 
 	b.Start()
